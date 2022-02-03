@@ -1,0 +1,68 @@
+#include<iostream.h>
+#include<stdio.h>
+#include<string.h>
+#include<conio.h>
+class bank
+{
+	int acno;
+	char *nm, *acctype;
+	float bal;
+   public:
+	bank(int acc_no, char *name, char *acc_type, float b)          {
+		acno=acc_no;
+		strcpy(nm, name);
+		strcpy(acctype, acc_type);
+		bal=b;
+	}
+	void deposit();
+	void withdraw();
+	void display();
+};
+void bank::deposit()   //depositing an amount
+{
+	int damt1;
+	cout<<"\n Enter Deposit Amount = ";
+	cin>>damt1;
+	bal=bal+damt1;
+}
+void bank::withdraw()  //withdrawing an amount
+{
+	int wamt1;
+	cout<<"\n Enter Withdraw Amount = ";
+	cin>>wamt1;
+	if((bal<1000) || (wamt1>bal))
+		cout<<"\n Cannot Withdraw Amount";
+		else
+	bal=bal-wamt1;
+}
+void bank::display()  //displaying the details
+{
+	cout<<"\n ----------------------";
+	cout<<"\n Accout No. : "<<acno;
+	cout<<"\n Name : "<<nm;
+	cout<<"\n Account Type : "<<acctype;
+	cout<<"\n Balance : "<<bal;
+}
+void main()
+{
+	int acc_no;
+	char *name, *acc_type;
+	float balance;
+	clrscr();
+	cout<<"\n Enter Details: \n";
+	cout<<"-----------------------";
+	cout<<"\n Accout No. ";
+	cin>>acc_no;
+	cout<<"\n Name : ";
+	cin>>name;
+	cout<<"\n Account Type : ";
+	cin>>acc_type;
+	cout<<"\n Balance : ";
+	cin>>balance;
+
+	bank b1(acc_no, name, acc_type, balance);  //object is created
+	b1.deposit(); //
+	b1.withdraw(); // calling member functions
+	b1.display(); //
+	getch();
+}
